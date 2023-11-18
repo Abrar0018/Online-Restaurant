@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import { COLORS } from '../theme/theme'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { HomeScreen, FavoritesScreen, OrderHistoryScreen } from '../screens'
@@ -25,9 +24,7 @@ const TabNavigator = () => {
             <Icon
               name='home'
               size={30}
-              color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
-              }
+              color={focused ? '#D17842' : '#52555A'}
             />
           ),
         }}
@@ -40,9 +37,7 @@ const TabNavigator = () => {
             <Icon
               name='heart'
               size={30}
-              color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
-              }
+              color={focused ? '#D17842' : '#52555A'}
             />
           ),
         }}
@@ -55,9 +50,7 @@ const TabNavigator = () => {
             <Icon
               name='history'
               size={30}
-              color={
-                focused ? COLORS.primaryOrangeHex : COLORS.primaryLightGreyHex
-              }
+              color={focused ? '#D17842' : '#52555A'}
             />
           ),
         }}
