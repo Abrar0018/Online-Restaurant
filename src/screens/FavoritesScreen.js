@@ -1,25 +1,33 @@
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
-import globalStyles from '../utils/styles/globalstyles'
+import { useSelector } from 'react-redux'
 
-const FavoritesScreen = ({ navigation }) => {
+import globalStyles from '../utils/styles/globalstyles'
+import Dish from '../components/Dish'
+
+const FavoritesScreen = () => {
+  const favDishes = useSelector((store) => store.favorites)
+
+  if (favDishes && favDishes.length == 0)
+    return (
+      <View style={globalStyles.container}>
+        <Text style={[globalStyles.label, globalStyles.boldText]}>
+          You don't have any favorites added ....
+        </Text>
+      </View>
+    )
+
   return (
     <ScrollView>
-      <View style={[globalStyles.container, globalStyles.flexGap(10)]}>
-        <Text style={globalStyles.text()}>
-          A List of favorite recipes will appear here
+      <View style={{ paddingTop: 20, paddingBottom: 70 }}>
+        <Text style={[globalStyles.label, globalStyles.boldText]}>
+          List of your favorite dishes
         </Text>
-        {[1, 2, 3].map((el) => {
-          return (
-            <TouchableOpacity
-              key={el}
-              style={[globalStyles.cardView]}
-              onPress={() => navigation.push('Details')}
-            >
-              <Text style={globalStyles.text()}>Recipe Content</Text>
-            </TouchableOpacity>
-          )
-        })}
+        <View style={[globalStyles.flexGap(5)]}>
+          {favDishes.map((dish) => {
+            return <Dish key={dish.id} {...dish} />
+          })}
+        </View>
       </View>
     </ScrollView>
   )

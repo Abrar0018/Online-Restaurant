@@ -85,7 +85,7 @@ const globalStyles = StyleSheet.create({
   },
 
   boxShadow: (amount = 10) => ({
-    elevation: 10,
+    elevation: amount,
     backgroundColor: 'white',
   }),
 })

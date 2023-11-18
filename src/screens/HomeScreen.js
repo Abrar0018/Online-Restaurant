@@ -1,25 +1,24 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 import globalStyles from '../utils/styles/globalstyles'
+import Dish from '../components/Dish'
 
 const HomeScreen = ({ navigation }) => {
+  const dishes = useSelector((store) => store.dishes)
+
   return (
     <ScrollView>
-      <View style={[globalStyles.container, globalStyles.flexGap(10)]}>
-        <Text style={globalStyles.text()}>
-          A List of recipes will appear here
+      <View style={{ paddingTop: 20, paddingBottom: 70 }}>
+        <Text style={[globalStyles.label, globalStyles.boldText]}>
+          Welcome to our Online Restaurant{' '}
         </Text>
-        {[1, 2, 3, 4, 5].map((el) => {
-          return (
-            <TouchableOpacity
-              key={el}
-              style={[globalStyles.cardView]}
-              onPress={() => navigation.push('Details')}
-            >
-              <Text style={globalStyles.text()}>Recipe Content</Text>
-            </TouchableOpacity>
-          )
-        })}
+        <View style={[globalStyles.flexGap(5)]}>
+          {dishes.map((dish) => {
+            return <Dish key={dish.id} {...dish} />
+          })}
+        </View>
       </View>
     </ScrollView>
   )
