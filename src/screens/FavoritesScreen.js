@@ -8,7 +8,7 @@ import Dish from '../components/Dish'
 const FavoritesScreen = () => {
   const favDishes = useSelector((store) => store.favorites)
 
-  if (favDishes && favDishes.length == 0)
+  if (!favDishes || favDishes.length == 0)
     return (
       <View style={globalStyles.container}>
         <Text style={[globalStyles.label, globalStyles.boldText]}>

@@ -23,8 +23,8 @@ const restaurantSlice = createSlice({
         state.orderHistory = action.payload
       }),
       builder.addCase(loadDataFromAsyncStorage.fulfilled, (state, action) => {
-        state.orderHistory = action.payload.orderHistory
-        state.favorites = action.payload.favorites
+        state.orderHistory = action.payload.orderHistory || []
+        state.favorites = action.payload.favorites || []
       })
   },
   reducers: {

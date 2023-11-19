@@ -8,7 +8,7 @@ import TextWithLabel from '../components/TextWithLabel'
 const OrderHistoryScreen = () => {
   const orderHistory = useSelector((state) => state.orderHistory)
 
-  if (orderHistory.length == 0)
+  if (!orderHistory || orderHistory.length == 0)
     return (
       <View style={globalStyles.container}>
         <Text style={[globalStyles.label, globalStyles.boldText]}>

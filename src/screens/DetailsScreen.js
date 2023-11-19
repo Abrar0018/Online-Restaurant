@@ -16,7 +16,9 @@ const Details = ({ route }) => {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const isFavorite = useSelector((state) =>
-    state.favorites.find((favoriteDish) => favoriteDish.id === id)
+    state.favorites
+      ? state.favorites.find((favoriteDish) => favoriteDish.id === id)
+      : false
   )
   const [orderQuantity, setOrderQuantity] = React.useState(1)
 
